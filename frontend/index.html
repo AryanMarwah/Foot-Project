@@ -68,6 +68,7 @@
 
     <div class="container" id="testpage1" style="display: none;">
         <h1>Begin assessment!</h1>
+        <div id="countdown">3</div>
         <button onclick="navigateToPage3()">Next</button>
     </div>
 
@@ -88,6 +89,7 @@
             document.getElementById('welcomepage').style.display = 'none';
             document.getElementById('testpage1').style.display = 'block';
             document.getElementById('page3').style.display = 'none';
+            startCountdown();
         }
 
         function navigateToPage3() {
@@ -95,6 +97,25 @@
             document.getElementById('testpage1').style.display = 'none';
             document.getElementById('page3').style.display = 'block';
         }
+
+        function startCountdown() {
+            let countdownElement = document.getElementById('countdown');
+            let seconds = 10;
+
+            function updateCountdown() {
+                countdownElement.textContent = seconds;
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(countdownInterval);
+                    navigateToPage3();
+                }
+            }
+
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
     </script>
 </body>
 </html>
