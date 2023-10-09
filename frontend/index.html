@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="welcomepage">
+        <h1>Welcome!</h1>
+        <p>Please enter details below and click the button to begin.</p>
+        <form id="loginForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="weight">Weight (lbs):</label>
+            <input type="number" id="weight" name="weight" required><br><br>
+
+            <!-- <button type="button" onclick="captureFormData()">Login</button> -->
+        </form>
+        <button onclick="navigateToTestPage1()">Login</button>
+    </div>
+
+    <div class="container" id="testpage1" style="display: none;">
+        <h1>Begin assessment!</h1>
+        <button onclick="navigateToPage3()">Next</button>
+    </div>
+
+    <div class="container" id="page3" style="display: none;">
+        <h1>Thank You!</h1>
+        <p>Thank you for taking the examination. <br> Your results have been recorded. </p>
+        <button onclick="navigateToWelcomePage()">Back to Login</button>
+    </div>
+
+    <script>
+        function navigateToWelcomePage() {
+            document.getElementById('welcomepage').style.display = 'block';
+            document.getElementById('testpage1').style.display = 'none';
+            document.getElementById('page3').style.display = 'none';
+        }
+
+        function navigateToTestPage1() {
+            document.getElementById('welcomepage').style.display = 'none';
+            document.getElementById('testpage1').style.display = 'block';
+            document.getElementById('page3').style.display = 'none';
+        }
+
+        function navigateToPage3() {
+            document.getElementById('welcomepage').style.display = 'none';
+            document.getElementById('testpage1').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
